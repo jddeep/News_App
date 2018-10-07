@@ -13,13 +13,13 @@ public class CategoryAdapter extends FragmentPagerAdapter {
     public Fragment getItem(int position) {
         if(position == 0) {
             return new SportsFragment();
-        }else {
-            return new SportsFragment();
+        }else{
+            return new TechnologyFragment();
         }
     }
 
     @Override
     public int getCount() {
-        return 1;
+        return 2;
     }
 }
