@@ -19,28 +19,29 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.Toast;
 
-
 import java.util.List;
 
 import static android.content.Context.CONNECTIVITY_SERVICE;
 
 
-public class TechnologyFragment extends android.support.v4.app.Fragment implements LoaderManager.LoaderCallbacks<List<News>>{
-    String url = "https://newsapi.org/v2/top-headlines?country=in&category=technology&apiKey=21353109f25846cebd5f6cbbbe4b1a98";
-    private static final int LoaderId = 2;
+public class PoliticsFragment extends android.support.v4.app.Fragment implements LoaderManager.LoaderCallbacks<List<News>> {
+    String url = "https://newsapi.org/v2/top-headlines?country=in&category=politics&apiKey=21353109f25846cebd5f6cbbbe4b1a98";
+    private static final int LoaderId = 3;
     private View rootview;
     private NewsListAdapter Newsadapter;
     private ListView listView;
-    private static final String TAG = "TechnologyFragment";
-    public TechnologyFragment() {
+    private static final String TAG = "PoliticsFragment";
+
+    public PoliticsFragment() {
         // Required empty public constructor
     }
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        rootview = inflater.inflate(R.layout.fragment_technology, container, false);
+        rootview = inflater.inflate(R.layout.fragment_politics, container, false);
         ConnectivityManager connectivityManager =
                 (ConnectivityManager) getActivity().getSystemService(CONNECTIVITY_SERVICE);
 
@@ -53,7 +54,8 @@ public class TechnologyFragment extends android.support.v4.app.Fragment implemen
         } else {
             Toast.makeText(getActivity(), "No News found", Toast.LENGTH_SHORT).show();
         }
-        listView = (ListView) rootview.findViewById(R.id.list2);
+        listView = (ListView) rootview.findViewById(R.id.list3);
+
 
         return rootview;
     }
@@ -82,18 +84,18 @@ public class TechnologyFragment extends android.support.v4.app.Fragment implemen
 
     @NonNull
     @Override
-    public Loader<List<News>> onCreateLoader(int i, Bundle bundle) {
-        return new NewsListLoader(getActivity(), url);
+    public Loader<List<News>> onCreateLoader(int i,Bundle bundle) {
+        return new NewsListLoader(getActivity(),url);
     }
 
     @Override
     public void onLoadFinished(@NonNull Loader<List<News>> loader, List<News> news) {
-       if(news!=null && !news.isEmpty()){
-           buildUI(news);
-       }else {
-           Toast.makeText(getActivity(), "No News found", Toast.LENGTH_SHORT).show();
+        if(news!=null && !news.isEmpty()){
+            buildUI(news);
+        }else {
+            Toast.makeText(getActivity(), "No News found", Toast.LENGTH_SHORT).show();
 
-       }
+        }
     }
 
     @Override
@@ -101,6 +103,3 @@ public class TechnologyFragment extends android.support.v4.app.Fragment implemen
 Newsadapter.clear();
     }
 }
-
-
-
