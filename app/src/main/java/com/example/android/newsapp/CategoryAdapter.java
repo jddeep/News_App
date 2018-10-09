@@ -17,16 +17,15 @@ public class CategoryAdapter extends FragmentPagerAdapter {
 
     @Override
     public Fragment getItem(int position) {
-        if(position == 0){
+        if (position == 0) {
             return new SportsFragment();
-        }else if(position == 1){
+        } else if (position == 1) {
             return new TechnologyFragment();
-        }else if(position == 2){
+        } else if (position == 2) {
             return new PoliticsFragment();
-        }else if(position == 3){
+        } else if (position == 3) {
             return new HealthFragment();
-        }
-        else {
+        } else {
             return new EntertainmentFragment();
         }
     }
@@ -39,15 +38,15 @@ public class CategoryAdapter extends FragmentPagerAdapter {
 
     @Override
     public CharSequence getPageTitle(int position) {
-        if(position == 0){
+        if (position == 0) {
             return mContext.getString(R.string.category_sports);
-        }else if(position == 1){
+        } else if (position == 1) {
             return mContext.getString(R.string.category_technology);
-        }else if(position == 2){
+        } else if (position == 2) {
             return mContext.getString(R.string.category_politics);
-        }else if(position == 3) {
+        } else if (position == 3) {
             return mContext.getString(R.string.category_health);
-        }else {
+        } else {
             return mContext.getString(R.string.category_entertainment);
         }
 
