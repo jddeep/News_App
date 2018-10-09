@@ -7,12 +7,12 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
 public class CategoryAdapter extends FragmentPagerAdapter {
-    private Context context;
+    private Context mContext;
     private String x;
 
     public CategoryAdapter(FragmentManager fm, Context context) {
         super(fm);
-        this.context = context;
+        mContext = context;
     }
 
     @Override
@@ -23,27 +23,32 @@ public class CategoryAdapter extends FragmentPagerAdapter {
             return new TechnologyFragment();
         }else if(position == 2){
             return new PoliticsFragment();
-        }else {
+        }else if(position == 3){
             return new HealthFragment();
+        }
+        else {
+            return new EntertainmentFragment();
         }
     }
 
     @Override
     public int getCount() {
-        return 4;
+        return 5;
     }
 
 
     @Override
     public CharSequence getPageTitle(int position) {
         if(position == 0){
-            return context.getString(R.string.category_sports);
+            return mContext.getString(R.string.category_sports);
         }else if(position == 1){
-            return context.getString(R.string.category_technology);
+            return mContext.getString(R.string.category_technology);
         }else if(position == 2){
-            return context.getString(R.string.category_politics);
+            return mContext.getString(R.string.category_politics);
+        }else if(position == 3) {
+            return mContext.getString(R.string.category_health);
         }else {
-            return context.getString(R.string.category_health);
+            return mContext.getString(R.string.category_entertainment);
         }
 
     }

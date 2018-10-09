@@ -5,7 +5,8 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
     <string name="category_sports">Sports</string>
-    <string name="category_technology">Technology</string>
+    <string name="category_technology">Tech</string>
     <string name="category_politics">Politics</string>
     <string name="category_health">Health</string>
+    <string name="category_entertainment">Entertainment</string>
 </resources>

@@ -26,7 +26,7 @@ import static android.content.Context.CONNECTIVITY_SERVICE;
 
 public class PoliticsFragment extends android.support.v4.app.Fragment implements LoaderManager.LoaderCallbacks<List<News>> {
     String url = "https://newsapi.org/v2/top-headlines?country=in&category=politics&apiKey=21353109f25846cebd5f6cbbbe4b1a98";
-    private static final int LoaderId = 3;
+    private static final int LoaderId = 1;
     private View rootview;
     private NewsListAdapter Newsadapter;
     private ListView listView;
