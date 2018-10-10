@@ -17,6 +17,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import java.util.List;
@@ -30,7 +31,7 @@ public class SportsFragment extends Fragment implements LoaderManager.LoaderCall
     private View rootview;
     private NewsListAdapter Newsadapter;
     private ListView listView;
-
+    private ProgressBar progressBar;
 
     public SportsFragment() {
         // Required empty public constructor
@@ -43,6 +44,7 @@ public class SportsFragment extends Fragment implements LoaderManager.LoaderCall
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         rootview = inflater.inflate(R.layout.fragment_sports,container,false);
+//        progressBar = rootview.findViewById(R.id.progbar);
         ConnectivityManager connectivityManager =
                 (ConnectivityManager) getActivity().getSystemService(CONNECTIVITY_SERVICE);
 
@@ -52,9 +54,11 @@ public class SportsFragment extends Fragment implements LoaderManager.LoaderCall
         Log.e("SportsFragment ","isconnected is"+isConnected);
         if (isConnected) {
 //            getLoaderManager().initLoader(LoaderId, null, this);
+
             getLoaderManager().initLoader(LoaderId, null, this).forceLoad();
         } else {
-            Toast.makeText(getActivity(), "No News found", Toast.LENGTH_SHORT).show();
+            progressBar.setVisibility(View.GONE);
+            Toast.makeText(getActivity(), "Check Internet Connection", Toast.LENGTH_SHORT).show();
         }
         listView = (ListView) rootview.findViewById(R.id.list1);
         return rootview;
@@ -91,8 +95,10 @@ public class SportsFragment extends Fragment implements LoaderManager.LoaderCall
     @Override
     public void onLoadFinished(@NonNull Loader<List<News>> loader, List<News> news) {
         if(news != null && !news.isEmpty()){
+
             buildUI(news);
         }else{
+
             Toast.makeText(getActivity(), "No News found", Toast.LENGTH_SHORT).show();
         }
     }
