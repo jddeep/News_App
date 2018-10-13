@@ -40,7 +40,7 @@ public class TechnologyFragment extends android.support.v4.app.Fragment implemen
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        rootview = inflater.inflate(R.layout.fragment_technology, container, false);
+        rootview = inflater.inflate(R.layout.fragment_parent, container, false);
         ConnectivityManager connectivityManager =
                 (ConnectivityManager) getActivity().getSystemService(CONNECTIVITY_SERVICE);
 
@@ -53,7 +53,7 @@ public class TechnologyFragment extends android.support.v4.app.Fragment implemen
         } else {
             Toast.makeText(getActivity(), "No News found", Toast.LENGTH_SHORT).show();
         }
-        listView = (ListView) rootview.findViewById(R.id.list2);
+        listView = (ListView) rootview.findViewById(R.id.list1);
 
         return rootview;
     }

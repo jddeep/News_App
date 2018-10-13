@@ -1,16 +1,16 @@
 package com.example.android.newsapp;
 
-import android.content.Context;
 import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.LoaderManager;
 import android.support.v4.content.Loader;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -43,7 +43,7 @@ public class SportsFragment extends Fragment implements LoaderManager.LoaderCall
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        rootview = inflater.inflate(R.layout.fragment_sports,container,false);
+        rootview = inflater.inflate(R.layout.fragment_parent,container,false);
 //        progressBar = rootview.findViewById(R.id.progbar);
         ConnectivityManager connectivityManager =
                 (ConnectivityManager) getActivity().getSystemService(CONNECTIVITY_SERVICE);
@@ -71,6 +71,7 @@ public class SportsFragment extends Fragment implements LoaderManager.LoaderCall
 
     private void buildUI(List<News> newsList) {
 //        ListView listView = (ListView) rootview.findViewById(R.id.list);
+
         Newsadapter = new NewsListAdapter(getActivity(), newsList);
         listView.setAdapter(Newsadapter);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {

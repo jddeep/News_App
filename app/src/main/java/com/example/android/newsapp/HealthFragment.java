@@ -42,7 +42,7 @@ public class HealthFragment extends android.support.v4.app.Fragment implements L
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        rootview = inflater.inflate(R.layout.fragment_health, container, false);
+        rootview = inflater.inflate(R.layout.fragment_parent, container, false);
         ConnectivityManager connectivityManager =
                 (ConnectivityManager) getActivity().getSystemService(CONNECTIVITY_SERVICE);
 
@@ -55,7 +55,7 @@ public class HealthFragment extends android.support.v4.app.Fragment implements L
         } else {
             Toast.makeText(getActivity(), "No News found", Toast.LENGTH_SHORT).show();
         }
-        listView = (ListView) rootview.findViewById(R.id.list4);
+        listView = (ListView) rootview.findViewById(R.id.list1);
 
 
         return rootview;
