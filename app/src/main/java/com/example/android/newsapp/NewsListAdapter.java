@@ -14,6 +14,8 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.squareup.picasso.Picasso;
+
 import java.io.InputStream;
 import java.util.List;
 
@@ -39,36 +41,45 @@ public class NewsListAdapter extends ArrayAdapter<News> {
         publishDate.setText(currentNews.getPublishDate());
         ImageView thumbnail = (ImageView) listitemView.findViewById(R.id.thumbnail);
 
-        DownloadImageTask downloadImageTask = new DownloadImageTask(thumbnail);
-        downloadImageTask.execute(currentNews.getThumbnail());
+        if(currentNews != null){
+            Picasso.get()
+                    .load(currentNews.getThumbnail())
+                    .centerCrop()
+                    .fit()
+
+                    .into(thumbnail);
+        }
+
+//        DownloadImageTask downloadImageTask = new DownloadImageTask(thumbnail);
+//        downloadImageTask.execute(currentNews.getThumbnail());
     return listitemView;
     }
 
-    public class DownloadImageTask extends AsyncTask<String,Void,Bitmap> {
-
-        ImageView thumbnail;
-
-        public DownloadImageTask(ImageView bmImage) {
-            thumbnail = bmImage;
-        }
-
-        protected Bitmap doInBackground(String... urls) {
-            String urldisplay = urls[0];
-            Bitmap bmp = null;
-            try {
-                InputStream in = new java.net.URL(urldisplay).openStream();
-                bmp = BitmapFactory.decodeStream(in);
-            } catch (Exception e) {
-                Log.e("Error", e.getMessage());
-                e.printStackTrace();
-            }
-            return bmp;
-        }
-        protected void onPostExecute(Bitmap result) {
-            thumbnail.setImageBitmap(result);
-
-
-        }
-    }
+//    public class DownloadImageTask extends AsyncTask<String,Void,Bitmap> {
+//
+//        ImageView thumbnail;
+//
+//        public DownloadImageTask(ImageView bmImage) {
+//            thumbnail = bmImage;
+//        }
+//
+//        protected Bitmap doInBackground(String... urls) {
+//            String urldisplay = urls[0];
+//            Bitmap bmp = null;
+//            try {
+//                InputStream in = new java.net.URL(urldisplay).openStream();
+//                bmp = BitmapFactory.decodeStream(in);
+//            } catch (Exception e) {
+//                Log.e("Error", e.getMessage());
+//                e.printStackTrace();
+//            }
+//            return bmp;
+//        }
+//        protected void onPostExecute(Bitmap result) {
+//            thumbnail.setImageBitmap(result);
+//
+//
+//        }
+//    }
 
 }

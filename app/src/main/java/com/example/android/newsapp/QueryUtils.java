@@ -49,7 +49,7 @@ public class QueryUtils {
                 String infoLink = currentNews.getString("url");
                 String thumbnail =currentNews.getString("urlToImage");
                 String publisheDate = currentNews.getString("publishedAt");
-                publisheDate = publisheDate.replace('T',' ');
+                publisheDate =  publisheDate.replace('T',' ');
 
                 if(!description.equals("null") || !thumbnail.equals("null")) {
                     News news = new News(title, description, infoLink, thumbnail, publisheDate);

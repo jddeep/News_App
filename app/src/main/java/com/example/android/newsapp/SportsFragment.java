@@ -9,6 +9,7 @@ import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.LoaderManager;
 import android.support.v4.content.Loader;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -26,13 +27,12 @@ import static android.content.Context.CONNECTIVITY_SERVICE;
 
 
 public class SportsFragment extends Fragment implements LoaderManager.LoaderCallbacks<List<News>> {
-    String url = "https://newsapi.org/v2/top-headlines?country=in&category=sports&apiKey=21353109f25846cebd5f6cbbbe4b1a98";
+    String url = "https://newsapi.org/v2/top-headlines?country=in&pageSize=40&category=sports&apiKey=21353109f25846cebd5f6cbbbe4b1a98";
     private static final int LoaderId = 1;
     private View rootview;
     private NewsListAdapter Newsadapter;
     private ListView listView;
     private ProgressBar progressBar;
-
     public SportsFragment() {
         // Required empty public constructor
     }
@@ -44,7 +44,7 @@ public class SportsFragment extends Fragment implements LoaderManager.LoaderCall
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         rootview = inflater.inflate(R.layout.fragment_parent,container,false);
-//        progressBar = rootview.findViewById(R.id.progbar);
+//       progressBar = rootview.findViewById(R.id.progbar);
         ConnectivityManager connectivityManager =
                 (ConnectivityManager) getActivity().getSystemService(CONNECTIVITY_SERVICE);
 
@@ -57,7 +57,7 @@ public class SportsFragment extends Fragment implements LoaderManager.LoaderCall
 
             getLoaderManager().initLoader(LoaderId, null, this).forceLoad();
         } else {
-            progressBar.setVisibility(View.GONE);
+
             Toast.makeText(getActivity(), "Check Internet Connection", Toast.LENGTH_SHORT).show();
         }
         listView = (ListView) rootview.findViewById(R.id.list1);
